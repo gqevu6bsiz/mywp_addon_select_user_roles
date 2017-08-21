@@ -8,11 +8,11 @@ if( ! class_exists( 'MywpControllerAbstractModule' ) ) {
   return false;
 }
 
-if ( ! class_exists( 'MywpControllerModuleSelectUserRolesMainGeneral' ) ) :
+if ( ! class_exists( 'MywpControllerModuleAddOnSelectUserRolesMainGeneral' ) ) :
 
-final class MywpControllerModuleSelectUserRolesMainGeneral extends MywpControllerAbstractModule {
+final class MywpControllerModuleAddOnSelectUserRolesMainGeneral extends MywpControllerAbstractModule {
 
-  static protected $id = 'select_user_roles_main_general';
+  static protected $id = 'add_on_select_user_roles_main_general';
 
   static protected $is_do_controller = true;
 
@@ -52,7 +52,7 @@ final class MywpControllerModuleSelectUserRolesMainGeneral extends MywpControlle
 
   }
 
-  private static function is_mywp_select_user_roles_plugin( $plugin_file_name = false ) {
+  private static function is_current_plugin( $plugin_file_name = false ) {
 
     if( empty( $plugin_file_name ) ) {
 
@@ -74,13 +74,13 @@ final class MywpControllerModuleSelectUserRolesMainGeneral extends MywpControlle
 
   public static function plugin_row_meta( $plugin_meta , $plugin_file , $plugin_data , $status ) {
 
-    if ( ! self::is_mywp_select_user_roles_plugin( $plugin_file ) ) {
+    if ( ! self::is_current_plugin( $plugin_file ) ) {
 
       return $plugin_meta;
 
     }
 
-    $plugin_info = MywpAddonSelectUserRolesApi::plugin_info();
+    $plugin_info = MywpAddOnSelectUserRolesApi::plugin_info();
 
     if( ! empty( $plugin_info['document_url'] ) ) {
 
@@ -88,7 +88,7 @@ final class MywpControllerModuleSelectUserRolesMainGeneral extends MywpControlle
 
     }
 
-    $plugin_meta = apply_filters( 'mywp_addon_select_user_roles_plugin_row_meta' , $plugin_meta , $plugin_file , $plugin_data , $status );
+    $plugin_meta = apply_filters( 'mywp_add_on_select_user_roles_plugin_row_meta' , $plugin_meta , $plugin_file , $plugin_data , $status );
 
     return $plugin_meta;
 
@@ -96,13 +96,13 @@ final class MywpControllerModuleSelectUserRolesMainGeneral extends MywpControlle
 
   public static function plugin_action_links( $actions , $plugin_file , $plugin_data , $context ) {
 
-    if ( ! self::is_mywp_select_user_roles_plugin( $plugin_file ) ) {
+    if ( ! self::is_current_plugin( $plugin_file ) ) {
 
       return $actions;
 
     }
 
-    $plugin_info = MywpAddonSelectUserRolesApi::plugin_info();
+    $plugin_info = MywpAddOnSelectUserRolesApi::plugin_info();
 
     if( ! empty( $plugin_info['admin_url'] ) ) {
 
@@ -112,7 +112,7 @@ final class MywpControllerModuleSelectUserRolesMainGeneral extends MywpControlle
 
     }
 
-    $actions = apply_filters( 'mywp_addon_select_user_roles_plugin_action_links' , $actions , $plugin_file , $plugin_data , $context );
+    $actions = apply_filters( 'mywp_add_on_select_user_roles_plugin_action_links' , $actions , $plugin_file , $plugin_data , $context );
 
     return $actions;
 
@@ -120,6 +120,6 @@ final class MywpControllerModuleSelectUserRolesMainGeneral extends MywpControlle
 
 }
 
-MywpControllerModuleSelectUserRolesMainGeneral::init();
+MywpControllerModuleAddOnSelectUserRolesMainGeneral::init();
 
 endif;

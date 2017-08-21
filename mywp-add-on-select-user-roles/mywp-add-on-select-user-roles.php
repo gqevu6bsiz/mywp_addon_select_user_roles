@@ -3,12 +3,12 @@
 Plugin Name: My WP Add-on Select User Roles
 Plugin URI: https://mywpcustomize.com/
 Description: Add-on the apply customize for selected user roles on My WP.
-Version: 1.0
+Version: 1.1
 Author: gqevu6bsiz
 Author URI: http://gqevu6bsiz.chicappa.jp/
 Requires at least: 4.6
 Tested up to: 4.8
-Text Domain: mywp-add-on-user-roles
+Text Domain: mywp-add-on-select-user-roles
 Domain Path: /languages/
 */
 
@@ -16,9 +16,9 @@ if ( ! defined( 'ABSPATH' ) ) {
   exit;
 }
 
-if ( ! class_exists( 'MywpAddonSelectUserRoles' ) ) :
+if ( ! class_exists( 'MywpAddOnSelectUserRoles' ) ) :
 
-final class MywpAddonSelectUserRoles {
+final class MywpAddOnSelectUserRoles {
 
   private static $instance;
 
@@ -52,7 +52,7 @@ final class MywpAddonSelectUserRoles {
   private static function define_constants() {
 
     define( 'MYWP_ADD_ON_SELECT_USER_ROLES_NAME' , 'My WP Add-on Select User Roles' );
-    define( 'MYWP_ADD_ON_SELECT_USER_ROLES_VERSION' , '1.0' );
+    define( 'MYWP_ADD_ON_SELECT_USER_ROLES_VERSION' , '1.1' );
     define( 'MYWP_ADD_ON_SELECT_USER_ROLES_PLUGIN_FILE' , __FILE__ );
     define( 'MYWP_ADD_ON_SELECT_USER_ROLES_PLUGIN_BASENAME' , plugin_basename( MYWP_ADD_ON_SELECT_USER_ROLES_PLUGIN_FILE ) );
     define( 'MYWP_ADD_ON_SELECT_USER_ROLES_PLUGIN_DIRNAME' , dirname( MYWP_ADD_ON_SELECT_USER_ROLES_PLUGIN_BASENAME ) );
@@ -87,7 +87,7 @@ final class MywpAddonSelectUserRoles {
 
   public static function wp_init() {
 
-    load_plugin_textdomain( 'mywp-add-on-user-roles' , false , MYWP_ADD_ON_SELECT_USER_ROLES_PLUGIN_DIRNAME . '/languages' );
+    load_plugin_textdomain( 'mywp-add-on-select-user-roles' , false , MYWP_ADD_ON_SELECT_USER_ROLES_PLUGIN_DIRNAME . '/languages' );
 
   }
 
@@ -95,8 +95,9 @@ final class MywpAddonSelectUserRoles {
 
     $dir = MYWP_ADD_ON_SELECT_USER_ROLES_PLUGIN_PATH . 'controller/modules/';
 
-    $includes['addon_select_user_roles_main_general']  = $dir . 'mywp.controller.module.select-user-roles.php';
-    $includes['addon_select_user_roles_setting']       = $dir . 'mywp.controller.module.select-user-roles.main.general.php';
+    $includes['add_on_select_user_roles_main_general'] = $dir . 'mywp.controller.module.main.general.php';
+    $includes['add_on_select_user_roles_setting']      = $dir . 'mywp.controller.module.select-user-roles.php';
+    $includes['add_on_select_user_roles_updater']      = $dir . 'mywp.controller.module.updater.php';
 
     return $includes;
 
@@ -106,7 +107,7 @@ final class MywpAddonSelectUserRoles {
 
     $dir = MYWP_ADD_ON_SELECT_USER_ROLES_PLUGIN_PATH . 'setting/modules/';
 
-    $includes['addon_select_user_roles_setting'] = $dir . 'mywp.setting.select-user-roles.php';
+    $includes['add_on_select_user_roles_setting'] = $dir . 'mywp.setting.select-user-roles.php';
 
     return $includes;
 
@@ -114,6 +115,6 @@ final class MywpAddonSelectUserRoles {
 
 }
 
-MywpAddonSelectUserRoles::init();
+MywpAddOnSelectUserRoles::init();
 
 endif;
