@@ -69,6 +69,14 @@ final class MywpSettingScreenAddOnSelectUserRoles extends MywpAbstractSettingMod
 
     check_ajax_referer( $action_name , $action_name );
 
+    if( ! MywpApi::is_manager() ) {
+
+      return false;
+
+    }
+
+    delete_site_transient( self::$id );
+
     $is_latest = MywpControllerModuleAddOnSelectUserRolesUpdater::is_latest();
 
     if( is_wp_error( $is_latest ) ) {

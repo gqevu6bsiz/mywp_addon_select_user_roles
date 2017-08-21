@@ -38,17 +38,7 @@ final class MywpControllerModuleAddOnSelectUserRolesMainGeneral extends MywpCont
 
     }
 
-    add_filter( 'plugin_row_meta' , array( __CLASS__ , 'plugin_row_meta' ) , 10 , 4 );
-
-    if( is_multisite() ) {
-
-      add_filter( 'network_admin_plugin_action_links_' . MYWP_ADD_ON_SELECT_USER_ROLES_PLUGIN_BASENAME , array( __CLASS__ , 'plugin_action_links' ) , 10 , 4 );
-
-    } else {
-
-      add_filter( 'plugin_action_links_' . MYWP_ADD_ON_SELECT_USER_ROLES_PLUGIN_BASENAME , array( __CLASS__ , 'plugin_action_links' ) , 10 , 4 );
-
-    }
+    add_action( 'load-plugins.php' , array( __CLASS__ , 'load_plugins' ) );
 
   }
 
@@ -69,6 +59,26 @@ final class MywpControllerModuleAddOnSelectUserRolesMainGeneral extends MywpCont
     }
 
     return true;
+
+  }
+
+  public static function load_plugins() {
+
+    add_filter( 'plugin_row_meta' , array( __CLASS__ , 'plugin_row_meta' ) , 10 , 4 );
+
+    if( is_multisite() ) {
+
+      add_filter( 'network_admin_plugin_action_links_' . MYWP_ADD_ON_SELECT_USER_ROLES_PLUGIN_BASENAME , array( __CLASS__ , 'plugin_action_links' ) , 10 , 4 );
+
+    } else {
+
+      add_filter( 'plugin_action_links_' . MYWP_ADD_ON_SELECT_USER_ROLES_PLUGIN_BASENAME , array( __CLASS__ , 'plugin_action_links' ) , 10 , 4 );
+
+    }
+
+    add_action( 'in_plugin_update_message-' . MYWP_ADD_ON_SELECT_USER_ROLES_PLUGIN_BASENAME , array( __CLASS__ , 'in_plugin_update_message' ) , 10 , 2 );
+
+    add_action( 'admin_print_footer_scripts' , array( __CLASS__ , 'admin_print_footer_scripts' ) );
 
   }
 
@@ -115,6 +125,35 @@ final class MywpControllerModuleAddOnSelectUserRolesMainGeneral extends MywpCont
     $actions = apply_filters( 'mywp_add_on_select_user_roles_plugin_action_links' , $actions , $plugin_file , $plugin_data , $context );
 
     return $actions;
+
+  }
+
+  public static function in_plugin_update_message( $plugin_data , $response ) {
+
+    if( empty( $response->new_version ) ) {
+
+      return false;
+
+    }
+
+    echo '</p>';
+
+    echo '<p class="show">';
+
+    $plugin_info = MywpAddOnSelectUserRolesApi::plugin_info();
+
+    printf( __( 'There is a new version of %1$s available. <a href="%2$s" target="_blank">View version %3$s details</a>.' ) , $response->new_version , $plugin_info['github'] , MYWP_ADD_ON_SELECT_USER_ROLES_NAME );
+
+  }
+
+  public static function admin_print_footer_scripts() {
+
+    echo '<style>';
+
+    printf( 'tr#%s-update .update-message p { display: none; }' , MYWP_ADD_ON_SELECT_USER_ROLES_PLUGIN_DIRNAME );
+    printf( 'tr#%s-update .update-message p.show { display: block; }' , MYWP_ADD_ON_SELECT_USER_ROLES_PLUGIN_DIRNAME );
+
+    echo '</style>';
 
   }
 

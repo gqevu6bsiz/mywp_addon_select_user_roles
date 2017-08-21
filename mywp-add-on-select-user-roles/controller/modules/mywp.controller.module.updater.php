@@ -19,6 +19,7 @@ final class MywpControllerModuleAddOnSelectUserRolesUpdater extends MywpControll
   protected static function after_init() {
 
     add_filter( 'mywp_controller_model_' . self::$id , array( __CLASS__ , 'mywp_controller_model' ) );
+    add_filter( 'site_transient_update_plugins' , array( __CLASS__ , 'site_transient_update_plugins' ) );
 
   }
 
@@ -27,6 +28,51 @@ final class MywpControllerModuleAddOnSelectUserRolesUpdater extends MywpControll
     $pre_model = true;
 
     return $pre_model;
+
+  }
+
+  public static function site_transient_update_plugins( $site_transient ) {
+
+    if( empty( $site_transient ) or empty( $site_transient->response ) ) {
+
+      return $site_transient;
+
+    }
+
+    $is_latest = self::is_latest();
+
+    if( is_wp_error( $is_latest ) ) {
+
+      return $site_transient;
+
+    }
+
+    if( $is_latest ) {
+
+      return $site_transient;
+
+    }
+
+    $latest = self::get_latest();
+
+    if( is_wp_error( $latest ) ) {
+
+      return $site_transient;
+
+    }
+
+    $plugin_info = MywpAddOnSelectUserRolesApi::plugin_info();
+
+    $update_plugin = array(
+      'slug' => MYWP_ADD_ON_SELECT_USER_ROLES_PLUGIN_DIRNAME,
+      'plugin' => MYWP_ADD_ON_SELECT_USER_ROLES_PLUGIN_BASENAME,
+      'new_version' => $latest,
+      'url' => $plugin_info['github'],
+    );
+
+    $site_transient->response[ MYWP_ADD_ON_SELECT_USER_ROLES_PLUGIN_BASENAME ] = (object) $update_plugin;
+
+    return $site_transient;
 
   }
 
