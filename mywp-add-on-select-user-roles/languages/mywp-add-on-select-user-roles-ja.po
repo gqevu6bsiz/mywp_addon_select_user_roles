@@ -1,0 +1,69 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: My WP Add-on Select User Roles\n"
+"POT-Creation-Date: 2017-08-23 11:08+0900\n"
+"PO-Revision-Date: 2017-08-23 13:42+0900\n"
+"Last-Translator: gqevu6bsiz <gqevu6bsiz@gmail.com>\n"
+"Language-Team: gqevu6bsiz@gmail.com\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.3\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: controller/modules/mywp.controller.module.main.general.php:97
+#: setting/modules/mywp.setting.select-user-roles.php:185
+#: setting/modules/mywp.setting.select-user-roles.php:187
+msgid "Document"
+msgstr "ドキュメント"
+
+#: controller/modules/mywp.controller.module.updater.php:170
+msgid "Invalid remote Json data. Please try again."
+msgstr "Json 形式が違いました。もう一度お試しください。"
+
+#: controller/modules/mywp.controller.module.updater.php:180
+msgid "Invalid results. Sorry maybe update format changed."
+msgstr "形式エラー。アップデートの形式が変更された可能性があります。"
+
+#: setting/modules/mywp.setting.select-user-roles.php:94
+#: setting/modules/mywp.setting.select-user-roles.php:173
+msgid "Using a latest version."
+msgstr "最新版をご利用中です。"
+
+#: setting/modules/mywp.setting.select-user-roles.php:109
+#, php-format
+msgid ""
+"%1$s allows the management for only your selected user roles to be "
+"customized."
+msgstr ""
+"%1$s はカスタマイズを適用するユーザー権限グループを指定することができます。"
+
+#: setting/modules/mywp.setting.select-user-roles.php:110
+msgid "Select the user roles to customize below."
+msgstr "ユーザー権限グループを選択してください。"
+
+#: setting/modules/mywp.setting.select-user-roles.php:165
+msgid "Plugin info"
+msgstr "プラグイン情報"
+
+#: setting/modules/mywp.setting.select-user-roles.php:169
+msgid "Version"
+msgstr "バージョン"
+
+#: setting/modules/mywp.setting.select-user-roles.php:178
+msgid "Check latest"
+msgstr "最新版チェック"
+
+#: setting/modules/mywp.setting.select-user-roles.php:180
+msgid "Check latest version"
+msgstr "最新版をチェックする"
+
+#. Description of the plugin/theme
+msgid "Add-on the apply customize for selected user roles on My WP."
+msgstr "選択したユーザー権限グループにMy WPのカスタマイズを適用します。"
+
+#~ msgid "%1$s allows the management for different user role to be customized."
+#~ msgstr ""
+#~ "%1$s はカスタマイズするユーザー権限グループを指定することができます。"

@@ -31,8 +31,8 @@ final class MywpAddOnSelectUserRolesApi {
   public static function plugin_info() {
 
     $plugin_info = array(
-      'admin_url' => admin_url( 'admin.php?page=mywp_add_on_select_user_roles' ),
-      'document_url' => 'https://mywpcustomize.com/',
+      'admin_url' => admin_url( 'admin.php?page=mywp_select_user_roles' ),
+      'document_url' => 'https://mywpcustomize.com/add_ons/add-on-select-user-roles/',
       'website_url' => 'https://mywpcustomize.com/',
       'github' => 'https://github.com/gqevu6bsiz/mywp_addon_select_user_roles',
       'github_tags' => 'https://api.github.com/repos/gqevu6bsiz/mywp_addon_select_user_roles/tags',

@@ -94,7 +94,7 @@ final class MywpControllerModuleAddOnSelectUserRolesMainGeneral extends MywpCont
 
     if( ! empty( $plugin_info['document_url'] ) ) {
 
-      $plugin_meta[] =  sprintf( '<a href="%1$s" target="_blank">%2$s</a>' , esc_url( $plugin_info['document_url'] ) , __( 'Document' , 'mywp-add-on-user-roles' ) );
+      $plugin_meta[] =  sprintf( '<a href="%1$s" target="_blank">%2$s</a>' , esc_url( $plugin_info['document_url'] ) , __( 'Document' , 'mywp-add-on-select-user-roles' ) );
 
     }
 
@@ -142,7 +142,7 @@ final class MywpControllerModuleAddOnSelectUserRolesMainGeneral extends MywpCont
 
     $plugin_info = MywpAddOnSelectUserRolesApi::plugin_info();
 
-    printf( __( 'There is a new version of %1$s available. <a href="%2$s" target="_blank">View version %3$s details</a>.' ) , $response->new_version , $plugin_info['github'] , MYWP_ADD_ON_SELECT_USER_ROLES_NAME );
+    printf( __( 'There is a new version of %1$s available. <a href="%2$s" %3$s>View version %4$s details</a>.' ) , $response->new_version , $plugin_info['github'] , '' ,  MYWP_ADD_ON_SELECT_USER_ROLES_NAME );
 
   }
 

@@ -88,7 +88,7 @@ final class MywpControllerModuleAddOnSelectUserRolesUpdater extends MywpControll
 
     if( empty( $remote_result ) ) {
 
-      $error->add( 'not_results' , __( 'Not results. Please try again.' , 'mywp-add-on-select-user-roles' ) );
+      $error->add( 'not_results' , __( 'Connection lost or the server is busy. Please try again later.' ) );
 
       return $error;
 
@@ -113,17 +113,17 @@ final class MywpControllerModuleAddOnSelectUserRolesUpdater extends MywpControll
 
         if( ! empty( $maybe_json ) && ! empty( $maybe_json->message ) ) {
 
-          $error->add( 'invalid_connection' , $maybe_json->message );
+          $error->add( 'invalid_connection' , sprintf( '[%d] %s' , $remote_code , $maybe_json->message ) );
 
         } else {
 
-          $error->add( 'invalid_connection' , sprintf( __( '[%d] Error was connection.' , 'mywp-add-on-select-user-roles' ) , $remote_code ) );
+          $error->add( 'invalid_json' , sprintf( '[%d] %s' , $remote_code , __( 'An error has occurred. Please reload the page and try again.' ) ) );
 
         }
 
       } else {
 
-        $error->add( 'invalid_connection' , sprintf( __( '[%d] Error was connection.' , 'mywp-add-on-select-user-roles' ) , $remote_code ) );
+        $error->add( 'invalid_connection' , sprintf( '[%d] %s' , $remote_code , __( 'Connection lost or the server is busy. Please try again later.' ) ) );
 
       }
 
@@ -133,7 +133,7 @@ final class MywpControllerModuleAddOnSelectUserRolesUpdater extends MywpControll
 
     if( empty( $remote_body ) ) {
 
-      $error->add( 'invalid_remote_body' , __( 'Nothing remote body.' , 'mywp-add-on-select-user-roles' ) );
+      $error->add( 'invalid_remote_body' , __( 'An error has occurred. Please reload the page and try again.' ) );
 
       return $error;
 
@@ -167,7 +167,7 @@ final class MywpControllerModuleAddOnSelectUserRolesUpdater extends MywpControll
 
     if( ! is_array( $maybe_remote_json ) or empty( $maybe_remote_json[0] ) ) {
 
-      $error->add( 'invalid_remote_json' , __( 'Invalid remote Json data.' , 'mywp-add-on-select-user-roles' ) );
+      $error->add( 'invalid_remote_json' , __( 'Invalid remote Json data. Please try again.' , 'mywp-add-on-select-user-roles' ) );
 
       return $error;
 

@@ -16,17 +16,7 @@ final class MywpSettingScreenAddOnSelectUserRoles extends MywpAbstractSettingMod
 
   static protected $priority = 50;
 
-  static private $menu = 'add_on_select_user_roles';
-
-  public static function after_init() {
-
-    $class_id = self::$id;
-
-    $class_menu = self::$menu;
-
-    add_action( "mywp_admin_print_footer_scripts_{$class_id}_{$class_menu}" , array( __CLASS__ , 'admin_print_footer_scripts' ) );
-
-  }
+  static private $menu = 'select_user_roles';
 
   public static function mywp_setting_menus( $setting_menus ) {
 
@@ -106,8 +96,8 @@ final class MywpSettingScreenAddOnSelectUserRoles extends MywpAbstractSettingMod
     $count_user_roles = MywpAddOnSelectUserRolesApi::get_count_user_roles();
 
     ?>
-    <p><?php printf( __( '%1$s allows the management for different user role to be customized.' , 'mywp-add-on-user-roles' ) , MYWP_ADD_ON_SELECT_USER_ROLES_NAME ); ?></p>
-    <p><?php _e( 'Select the user roles to customize below.' , 'mywp-add-on-user-roles' ); ?></p>
+    <p><?php printf( __( '%1$s allows the management for only your selected user roles to be customized.' , 'mywp-add-on-select-user-roles' ) , MYWP_ADD_ON_SELECT_USER_ROLES_NAME ); ?></p>
+    <p><?php _e( 'Select the user roles to customize below.' , 'mywp-add-on-select-user-roles' ); ?></p>
 
     <h3><?php _e( 'User Roles' ); ?></h3>
     <ul>
@@ -122,11 +112,13 @@ final class MywpSettingScreenAddOnSelectUserRoles extends MywpAbstractSettingMod
           <label>
             <input type="checkbox" name="mywp[data][select_user_roles][]" value="<?php echo esc_attr( $user_role ); ?>" <?php checked( $checked , true ); ?> />
             <?php echo $user_role_data['label']; ?>
-            <?php if( isset( $count_user_roles[ $user_role ] ) ) : ?>
-              <?php printf( __( '%1$s <span class="count">(%2$s)</span>' ), $user_role, number_format_i18n( $count_user_roles[ $user_role ] ) ); ?>
-            <?php else :?>
-              <?php echo $user_role; ?>
-            <?php endif; ?>
+            <code>
+              <?php if( isset( $count_user_roles[ $user_role ] ) ) : ?>
+                <?php printf( __( '%1$s <span class="count">(%2$s)</span>' ), $user_role, number_format_i18n( $count_user_roles[ $user_role ] ) ); ?>
+              <?php else :?>
+                <?php echo $user_role; ?>
+              <?php endif; ?>
+            </code>
           </label>
         </li>
 
@@ -139,7 +131,7 @@ final class MywpSettingScreenAddOnSelectUserRoles extends MywpAbstractSettingMod
 
   }
 
-  public static function mywp_current_setting_screen_footer() {
+  public static function mywp_current_setting_screen_after_footer() {
 
     $is_latest = MywpControllerModuleAddOnSelectUserRolesUpdater::is_latest();
 
@@ -153,24 +145,39 @@ final class MywpSettingScreenAddOnSelectUserRoles extends MywpAbstractSettingMod
 
     $plugin_info = MywpAddOnSelectUserRolesApi::plugin_info();
 
+    $class_have_latest = '';
+
+    if( $have_latest ) {
+
+      $class_have_latest = 'have-latest';
+
+    }
+
     ?>
-    <h3><?php _e( 'Version' , 'mywp-add-on-select-user-roles' ); ?></h3>
-    <table class="form-table" id="version-check-table">
+    <p>&nbsp;</p>
+    <h3><?php _e( 'Plugin info' , 'mywp-add-on-select-user-roles' ); ?></h3>
+    <table class="form-table <?php echo esc_attr( $class_have_latest ); ?>" id="version-check-table">
       <tbody>
         <tr>
-          <th><?php _e( 'Version:' ); ?></th>
+          <th><?php _e( 'Version' , 'mywp-add-on-select-user-roles' ); ?></th>
           <td>
             <code><?php echo MYWP_ADD_ON_SELECT_USER_ROLES_VERSION; ?></code>
+            <a href="<?php echo esc_url( $plugin_info['github'] ); ?>" target="_blank" class="button button-primary link-latest"><?php printf( __( 'Get Version %s' ) , $have_latest ); ?></a>
+            <p class="already-latest"><span class="dashicons dashicons-yes"></span> <?php _e( 'Using a latest version.' , 'mywp-add-on-select-user-roles' ); ?></p>
+            <br />
           </td>
         </tr>
         <tr>
-          <th>&nbsp;</th>
+          <th><?php _e( 'Check latest' , 'mywp-add-on-select-user-roles' ); ?></th>
           <td>
-            <button type="button" id="check-latest-version" class="button button-secondary"><?php _e( 'Check latest version' , 'mywp-add-on-select-user-roles' ); ?></button>
+            <button type="button" id="check-latest-version" class="button button-secondary check-latest"><span class="dashicons dashicons-update"></span> <?php _e( 'Check latest version' , 'mywp-add-on-select-user-roles' ); ?></button>
             <span class="spinner"></span>
-            <?php if( $have_latest ) : ?>
-              <a href="<?php echo esc_url( $plugin_info['github'] ); ?>" target="_blank" class="button button-primary"><?php printf( __( 'Get Version %s' ) , $have_latest ); ?></a>
-            <?php endif; ?>
+          </td>
+        </tr>
+        <tr>
+          <th><?php _e( 'Document' , 'mywp-add-on-select-user-roles' ); ?></th>
+          <td>
+            <a href="<?php echo esc_url( $plugin_info['document_url'] ); ?>" class="button button-secondary" target="_blank"><span class="dashicons dashicons-book"></span> <?php _e( 'Document' , 'mywp-add-on-select-user-roles' ); ?>
           </td>
         </tr>
       </tbody>
@@ -181,7 +188,7 @@ final class MywpSettingScreenAddOnSelectUserRoles extends MywpAbstractSettingMod
 
   }
 
-  public static function admin_print_footer_scripts() {
+  public static function mywp_current_admin_print_footer_scripts() {
 
 ?>
 <style>
@@ -190,6 +197,21 @@ final class MywpSettingScreenAddOnSelectUserRoles extends MywpAbstractSettingMod
 }
 #version-check-table.checking .spinner {
   visibility: visible;
+}
+#version-check-table .link-latest {
+  margin-left: 12px;
+  display: none;
+}
+#version-check-table .already-latest {
+  display: inline-block;
+}
+#version-check-table .check-latest {
+}
+#version-check-table.have-latest .link-latest {
+  display: inline-block;
+}
+#version-check-table.have-latest .already-latest {
+  display: none;
 }
 </style>
 <script>
