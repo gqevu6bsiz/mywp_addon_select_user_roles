@@ -64,10 +64,14 @@ final class MywpControllerModuleAddOnSelectUserRolesUpdater extends MywpControll
     $plugin_info = MywpAddOnSelectUserRolesApi::plugin_info();
 
     $update_plugin = array(
+      'id' => MYWP_ADD_ON_SELECT_USER_ROLES_PLUGIN_BASENAME,
       'slug' => MYWP_ADD_ON_SELECT_USER_ROLES_PLUGIN_DIRNAME,
       'plugin' => MYWP_ADD_ON_SELECT_USER_ROLES_PLUGIN_BASENAME,
       'new_version' => $latest,
       'url' => $plugin_info['github'],
+      'package' => false,
+      'tested' => false,
+      'compatibility' => false,
     );
 
     $site_transient->response[ MYWP_ADD_ON_SELECT_USER_ROLES_PLUGIN_BASENAME ] = (object) $update_plugin;

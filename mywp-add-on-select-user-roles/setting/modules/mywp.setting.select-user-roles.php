@@ -43,6 +43,12 @@ final class MywpSettingScreenAddOnSelectUserRoles extends MywpAbstractSettingMod
 
   public static function mywp_ajax() {
 
+    if( ! MywpApi::is_manager() ) {
+
+      return false;
+
+    }
+
     add_action( 'wp_ajax_' . MywpSetting::get_ajax_action_name( self::$id , 'check_latest' ) , array( __CLASS__ , 'check_latest' ) );
 
   }
@@ -81,7 +87,7 @@ final class MywpSettingScreenAddOnSelectUserRoles extends MywpAbstractSettingMod
 
     } else {
 
-      wp_send_json_success( array( 'is_latest' => 1 , 'message' => __( 'Using a latest version.' , 'mywp-add-on-select-user-roles' ) ) );
+      wp_send_json_success( array( 'is_latest' => 1 , 'message' => sprintf( '<p>%s</p>' , '<span class="dashicons dashicons-yes"></span> ' . __( 'Using a latest version.' , 'mywp-add-on-select-user-roles' ) ) ) );
 
     }
 
@@ -172,6 +178,7 @@ final class MywpSettingScreenAddOnSelectUserRoles extends MywpAbstractSettingMod
           <td>
             <button type="button" id="check-latest-version" class="button button-secondary check-latest"><span class="dashicons dashicons-update"></span> <?php _e( 'Check latest version' , 'mywp-add-on-select-user-roles' ); ?></button>
             <span class="spinner"></span>
+            <div id="check-latest-result"></div>
           </td>
         </tr>
         <tr>
@@ -256,7 +263,7 @@ jQuery(document).ready(function($){
 
       if( xhr.data.is_latest ) {
 
-        alert( xhr.data.message );
+        $('#check-latest-result').html( xhr.data.message );
 
         $version_check_table.removeClass('checking');
 

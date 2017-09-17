@@ -142,7 +142,7 @@ final class MywpControllerModuleAddOnSelectUserRolesMainGeneral extends MywpCont
 
     $plugin_info = MywpAddOnSelectUserRolesApi::plugin_info();
 
-    printf( __( 'There is a new version of %1$s available. <a href="%2$s" %3$s>View version %4$s details</a>.' ) , $response->new_version , $plugin_info['github'] , '' ,  MYWP_ADD_ON_SELECT_USER_ROLES_NAME );
+    printf( __( 'There is a new version of %1$s available. <a href="%2$s" %3$s>View version %4$s details</a>.' ) , $response->new_version , $plugin_info['github'] , 'target="_blank"' ,  MYWP_ADD_ON_SELECT_USER_ROLES_NAME );
 
   }
 
