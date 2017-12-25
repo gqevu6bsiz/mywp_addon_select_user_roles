@@ -8,11 +8,11 @@ if( ! class_exists( 'MywpControllerAbstractModule' ) ) {
   return false;
 }
 
-if ( ! class_exists( 'MywpControllerModuleAddOnSelectUserRoles' ) ) :
+if ( ! class_exists( 'MywpControllerModuleSelectUserRoles' ) ) :
 
-final class MywpControllerModuleAddOnSelectUserRoles extends MywpControllerAbstractModule {
+final class MywpControllerModuleSelectUserRoles extends MywpControllerAbstractModule {
 
-  static protected $id = 'add_on_select_user_roles';
+  static protected $id = 'select_user_roles';
 
   public static function mywp_controller_initial_data( $initial_data ) {
 
@@ -48,7 +48,7 @@ final class MywpControllerModuleAddOnSelectUserRoles extends MywpControllerAbstr
 
     }
 
-    if( ! MywpAddOnSelectUserRolesApi::is_do_controller_to_controller_id( $controller_id ) ) {
+    if( ! MywpSelectUserRolesApi::is_do_controller_to_controller_id( $controller_id ) ) {
 
       return $is_do_controller;
 
@@ -80,6 +80,6 @@ final class MywpControllerModuleAddOnSelectUserRoles extends MywpControllerAbstr
 
 }
 
-MywpControllerModuleAddOnSelectUserRoles::init();
+MywpControllerModuleSelectUserRoles::init();
 
 endif;

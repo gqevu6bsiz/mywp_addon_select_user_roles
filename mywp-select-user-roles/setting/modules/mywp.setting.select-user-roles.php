@@ -8,15 +8,15 @@ if( ! class_exists( 'MywpAbstractSettingModule' ) ) {
   return false;
 }
 
-if ( ! class_exists( 'MywpSettingScreenAddOnSelectUserRoles' ) ) :
+if ( ! class_exists( 'MywpSettingScreenSelectUserRoles' ) ) :
 
-final class MywpSettingScreenAddOnSelectUserRoles extends MywpAbstractSettingModule {
+final class MywpSettingScreenSelectUserRoles extends MywpAbstractSettingModule {
 
-  static protected $id = 'add_on_select_user_roles';
+  static protected $id = 'select_user_roles';
 
   static protected $priority = 50;
 
-  static private $menu = 'select_user_roles';
+  static private $menu = 'add_on_select_user_roles';
 
   public static function mywp_setting_menus( $setting_menus ) {
 
@@ -34,7 +34,7 @@ final class MywpSettingScreenAddOnSelectUserRoles extends MywpAbstractSettingMod
     $setting_screens[ self::$id ] = array(
       'title' => __( 'User Roles' ),
       'menu' => self::$menu,
-      'controller' => 'add_on_select_user_roles',
+      'controller' => 'select_user_roles',
     );
 
     return $setting_screens;
@@ -73,7 +73,7 @@ final class MywpSettingScreenAddOnSelectUserRoles extends MywpAbstractSettingMod
 
     delete_site_transient( self::$id );
 
-    $is_latest = MywpControllerModuleAddOnSelectUserRolesUpdater::is_latest();
+    $is_latest = MywpControllerModuleSelectUserRolesUpdater::is_latest();
 
     if( is_wp_error( $is_latest ) ) {
 
@@ -87,7 +87,7 @@ final class MywpSettingScreenAddOnSelectUserRoles extends MywpAbstractSettingMod
 
     } else {
 
-      wp_send_json_success( array( 'is_latest' => 1 , 'message' => sprintf( '<p>%s</p>' , '<span class="dashicons dashicons-yes"></span> ' . __( 'Using a latest version.' , 'mywp-add-on-select-user-roles' ) ) ) );
+      wp_send_json_success( array( 'is_latest' => 1 , 'message' => sprintf( '<p>%s</p>' , '<span class="dashicons dashicons-yes"></span> ' . __( 'Using a latest version.' , 'mywp-select-user-roles' ) ) ) );
 
     }
 
@@ -99,11 +99,11 @@ final class MywpSettingScreenAddOnSelectUserRoles extends MywpAbstractSettingMod
 
     $all_user_roles = MywpApi::get_all_user_roles();
 
-    $count_user_roles = MywpAddOnSelectUserRolesApi::get_count_user_roles();
+    $count_user_roles = MywpSelectUserRolesApi::get_count_user_roles();
 
     ?>
-    <p><?php printf( __( '%1$s allows the management for only your selected user roles to be customized.' , 'mywp-add-on-select-user-roles' ) , MYWP_ADD_ON_SELECT_USER_ROLES_NAME ); ?></p>
-    <p><?php _e( 'Select the user roles to customize below.' , 'mywp-add-on-select-user-roles' ); ?></p>
+    <p><?php printf( __( '%1$s allows the management for only your selected user roles to be customized.' , 'mywp-select-user-roles' ) , MYWP_SELECT_USER_ROLES_NAME ); ?></p>
+    <p><?php _e( 'Select the user roles to customize below.' , 'mywp-select-user-roles' ); ?></p>
 
     <h3><?php _e( 'User Roles' ); ?></h3>
     <ul>
@@ -139,17 +139,17 @@ final class MywpSettingScreenAddOnSelectUserRoles extends MywpAbstractSettingMod
 
   public static function mywp_current_setting_screen_after_footer() {
 
-    $is_latest = MywpControllerModuleAddOnSelectUserRolesUpdater::is_latest();
+    $is_latest = MywpControllerModuleSelectUserRolesUpdater::is_latest();
 
     $have_latest = false;
 
     if( ! is_wp_error( $is_latest ) && ! $is_latest ) {
 
-      $have_latest = MywpControllerModuleAddOnSelectUserRolesUpdater::get_latest();
+      $have_latest = MywpControllerModuleSelectUserRolesUpdater::get_latest();
 
     }
 
-    $plugin_info = MywpAddOnSelectUserRolesApi::plugin_info();
+    $plugin_info = MywpSelectUserRolesApi::plugin_info();
 
     $class_have_latest = '';
 
@@ -161,30 +161,30 @@ final class MywpSettingScreenAddOnSelectUserRoles extends MywpAbstractSettingMod
 
     ?>
     <p>&nbsp;</p>
-    <h3><?php _e( 'Plugin info' , 'mywp-add-on-select-user-roles' ); ?></h3>
+    <h3><?php _e( 'Plugin info' , 'mywp-select-user-roles' ); ?></h3>
     <table class="form-table <?php echo esc_attr( $class_have_latest ); ?>" id="version-check-table">
       <tbody>
         <tr>
-          <th><?php _e( 'Version' , 'mywp-add-on-select-user-roles' ); ?></th>
+          <th><?php _e( 'Version' , 'mywp-select-user-roles' ); ?></th>
           <td>
-            <code><?php echo MYWP_ADD_ON_SELECT_USER_ROLES_VERSION; ?></code>
+            <code><?php echo MYWP_SELECT_USER_ROLES_VERSION; ?></code>
             <a href="<?php echo esc_url( $plugin_info['github'] ); ?>" target="_blank" class="button button-primary link-latest"><?php printf( __( 'Get Version %s' ) , $have_latest ); ?></a>
-            <p class="already-latest"><span class="dashicons dashicons-yes"></span> <?php _e( 'Using a latest version.' , 'mywp-add-on-select-user-roles' ); ?></p>
+            <p class="already-latest"><span class="dashicons dashicons-yes"></span> <?php _e( 'Using a latest version.' , 'mywp-select-user-roles' ); ?></p>
             <br />
           </td>
         </tr>
         <tr>
-          <th><?php _e( 'Check latest' , 'mywp-add-on-select-user-roles' ); ?></th>
+          <th><?php _e( 'Check latest' , 'mywp-select-user-roles' ); ?></th>
           <td>
-            <button type="button" id="check-latest-version" class="button button-secondary check-latest"><span class="dashicons dashicons-update"></span> <?php _e( 'Check latest version' , 'mywp-add-on-select-user-roles' ); ?></button>
+            <button type="button" id="check-latest-version" class="button button-secondary check-latest"><span class="dashicons dashicons-update"></span> <?php _e( 'Check latest version' , 'mywp-select-user-roles' ); ?></button>
             <span class="spinner"></span>
             <div id="check-latest-result"></div>
           </td>
         </tr>
         <tr>
-          <th><?php _e( 'Document' , 'mywp-add-on-select-user-roles' ); ?></th>
+          <th><?php _e( 'Document' , 'mywp-select-user-roles' ); ?></th>
           <td>
-            <a href="<?php echo esc_url( $plugin_info['document_url'] ); ?>" class="button button-secondary" target="_blank"><span class="dashicons dashicons-book"></span> <?php _e( 'Document' , 'mywp-add-on-select-user-roles' ); ?>
+            <a href="<?php echo esc_url( $plugin_info['document_url'] ); ?>" class="button button-secondary" target="_blank"><span class="dashicons dashicons-book"></span> <?php _e( 'Document' , 'mywp-select-user-roles' ); ?>
           </td>
         </tr>
       </tbody>
@@ -329,6 +329,6 @@ jQuery(document).ready(function($){
 
 }
 
-MywpSettingScreenAddOnSelectUserRoles::init();
+MywpSettingScreenSelectUserRoles::init();
 
 endif;

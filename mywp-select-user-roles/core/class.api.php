@@ -4,9 +4,9 @@ if ( ! defined( 'ABSPATH' ) ) {
   exit;
 }
 
-if ( ! class_exists( 'MywpAddOnSelectUserRolesApi' ) ) :
+if ( ! class_exists( 'MywpSelectUserRolesApi' ) ) :
 
-final class MywpAddOnSelectUserRolesApi {
+final class MywpSelectUserRolesApi {
 
   private static $instance;
 
@@ -31,14 +31,14 @@ final class MywpAddOnSelectUserRolesApi {
   public static function plugin_info() {
 
     $plugin_info = array(
-      'admin_url' => admin_url( 'admin.php?page=mywp_select_user_roles' ),
+      'admin_url' => admin_url( 'admin.php?page=mywp_add_on_select_user_roles' ),
       'document_url' => 'https://mywpcustomize.com/add_ons/add-on-select-user-roles/',
       'website_url' => 'https://mywpcustomize.com/',
       'github' => 'https://github.com/gqevu6bsiz/mywp_addon_select_user_roles',
       'github_tags' => 'https://api.github.com/repos/gqevu6bsiz/mywp_addon_select_user_roles/tags',
     );
 
-    $plugin_info = apply_filters( 'mywp_add_on_select_user_roles_plugin_info' , $plugin_info );
+    $plugin_info = apply_filters( 'mywp_select_user_roles_plugin_info' , $plugin_info );
 
     return $plugin_info;
 
@@ -70,7 +70,7 @@ final class MywpAddOnSelectUserRolesApi {
 
     }
 
-    $is_do_controller = apply_filters( 'mywp_add_on_select_user_roles_is_do_controller_to_controller_id' , $is_do_controller , $controller_id );
+    $is_do_controller = apply_filters( 'mywp_select_user_roles_is_do_controller_to_controller_id' , $is_do_controller , $controller_id );
 
     return $is_do_controller;
 

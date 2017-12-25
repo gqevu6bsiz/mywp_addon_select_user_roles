@@ -8,13 +8,13 @@ if( ! class_exists( 'MywpControllerAbstractModule' ) ) {
   return false;
 }
 
-if ( ! class_exists( 'MywpControllerModuleAddOnSelectUserRolesUpdater' ) ) :
+if ( ! class_exists( 'MywpControllerModuleSelectUserRolesUpdater' ) ) :
 
-final class MywpControllerModuleAddOnSelectUserRolesUpdater extends MywpControllerAbstractModule {
+final class MywpControllerModuleSelectUserRolesUpdater extends MywpControllerAbstractModule {
 
-  static protected $id = 'add_on_select_user_roles_updater';
+  static protected $id = 'select_user_roles_updater';
 
-  static private $schedule_hook = 'mywp_add_on_select_user_roles_version_check';
+  static private $schedule_hook = 'mywp_select_user_roles_version_check';
 
   protected static function after_init() {
 
@@ -61,12 +61,12 @@ final class MywpControllerModuleAddOnSelectUserRolesUpdater extends MywpControll
 
     }
 
-    $plugin_info = MywpAddOnSelectUserRolesApi::plugin_info();
+    $plugin_info = MywpSelectUserRolesApi::plugin_info();
 
     $update_plugin = array(
-      'id' => MYWP_ADD_ON_SELECT_USER_ROLES_PLUGIN_BASENAME,
-      'slug' => MYWP_ADD_ON_SELECT_USER_ROLES_PLUGIN_DIRNAME,
-      'plugin' => MYWP_ADD_ON_SELECT_USER_ROLES_PLUGIN_BASENAME,
+      'id' => MYWP_SELECT_USER_ROLES_PLUGIN_BASENAME,
+      'slug' => MYWP_SELECT_USER_ROLES_PLUGIN_DIRNAME,
+      'plugin' => MYWP_SELECT_USER_ROLES_PLUGIN_BASENAME,
       'new_version' => $latest,
       'url' => $plugin_info['github'],
       'package' => false,
@@ -74,7 +74,7 @@ final class MywpControllerModuleAddOnSelectUserRolesUpdater extends MywpControll
       'compatibility' => false,
     );
 
-    $site_transient->response[ MYWP_ADD_ON_SELECT_USER_ROLES_PLUGIN_BASENAME ] = (object) $update_plugin;
+    $site_transient->response[ MYWP_SELECT_USER_ROLES_PLUGIN_BASENAME ] = (object) $update_plugin;
 
     return $site_transient;
 
@@ -82,7 +82,7 @@ final class MywpControllerModuleAddOnSelectUserRolesUpdater extends MywpControll
 
   public static function get_remote() {
 
-    $plugin_info = MywpAddOnSelectUserRolesApi::plugin_info();
+    $plugin_info = MywpSelectUserRolesApi::plugin_info();
 
     $remote_args = array();
 
@@ -171,7 +171,7 @@ final class MywpControllerModuleAddOnSelectUserRolesUpdater extends MywpControll
 
     if( ! is_array( $maybe_remote_json ) or empty( $maybe_remote_json[0] ) ) {
 
-      $error->add( 'invalid_remote_json' , __( 'Invalid remote Json data. Please try again.' , 'mywp-add-on-select-user-roles' ) );
+      $error->add( 'invalid_remote_json' , __( 'Invalid remote Json data. Please try again.' , 'mywp-select-user-roles' ) );
 
       return $error;
 
@@ -181,7 +181,7 @@ final class MywpControllerModuleAddOnSelectUserRolesUpdater extends MywpControll
 
     if( ! is_object( $remote_json ) or ! isset( $remote_json->name ) or ! isset( $remote_json->zipball_url ) or ! isset( $remote_json->tarball_url ) ) {
 
-      $error->add( 'invalid_json' , __( 'Invalid results. Sorry maybe update format changed.' , 'mywp-add-on-select-user-roles' ) );
+      $error->add( 'invalid_json' , __( 'Invalid results. Sorry maybe update format changed.' , 'mywp-select-user-roles' ) );
 
       return $error;
 
@@ -209,7 +209,7 @@ final class MywpControllerModuleAddOnSelectUserRolesUpdater extends MywpControll
 
     }
 
-    $latest_compare = version_compare( $latest , MYWP_ADD_ON_SELECT_USER_ROLES_VERSION , '<=' );
+    $latest_compare = version_compare( $latest , MYWP_SELECT_USER_ROLES_VERSION , '<=' );
 
     return $latest_compare;
 
@@ -255,6 +255,6 @@ final class MywpControllerModuleAddOnSelectUserRolesUpdater extends MywpControll
 
 }
 
-MywpControllerModuleAddOnSelectUserRolesUpdater::init();
+MywpControllerModuleSelectUserRolesUpdater::init();
 
 endif;

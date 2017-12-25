@@ -8,11 +8,11 @@ if( ! class_exists( 'MywpControllerAbstractModule' ) ) {
   return false;
 }
 
-if ( ! class_exists( 'MywpControllerModuleAddOnSelectUserRolesMainGeneral' ) ) :
+if ( ! class_exists( 'MywpControllerModuleSelectUserRolesMainGeneral' ) ) :
 
-final class MywpControllerModuleAddOnSelectUserRolesMainGeneral extends MywpControllerAbstractModule {
+final class MywpControllerModuleSelectUserRolesMainGeneral extends MywpControllerAbstractModule {
 
-  static protected $id = 'add_on_select_user_roles_main_general';
+  static protected $id = 'select_user_roles_main_general';
 
   static protected $is_do_controller = true;
 
@@ -52,7 +52,7 @@ final class MywpControllerModuleAddOnSelectUserRolesMainGeneral extends MywpCont
 
     $plugin_file_name = strip_tags( $plugin_file_name );
 
-    if ( strpos( MYWP_ADD_ON_SELECT_USER_ROLES_PLUGIN_BASENAME , $plugin_file_name ) === false ) {
+    if ( strpos( MYWP_SELECT_USER_ROLES_PLUGIN_BASENAME , $plugin_file_name ) === false ) {
 
       return false;
 
@@ -68,15 +68,15 @@ final class MywpControllerModuleAddOnSelectUserRolesMainGeneral extends MywpCont
 
     if( is_multisite() ) {
 
-      add_filter( 'network_admin_plugin_action_links_' . MYWP_ADD_ON_SELECT_USER_ROLES_PLUGIN_BASENAME , array( __CLASS__ , 'plugin_action_links' ) , 10 , 4 );
+      add_filter( 'network_admin_plugin_action_links_' . MYWP_SELECT_USER_ROLES_PLUGIN_BASENAME , array( __CLASS__ , 'plugin_action_links' ) , 10 , 4 );
 
     } else {
 
-      add_filter( 'plugin_action_links_' . MYWP_ADD_ON_SELECT_USER_ROLES_PLUGIN_BASENAME , array( __CLASS__ , 'plugin_action_links' ) , 10 , 4 );
+      add_filter( 'plugin_action_links_' . MYWP_SELECT_USER_ROLES_PLUGIN_BASENAME , array( __CLASS__ , 'plugin_action_links' ) , 10 , 4 );
 
     }
 
-    add_action( 'in_plugin_update_message-' . MYWP_ADD_ON_SELECT_USER_ROLES_PLUGIN_BASENAME , array( __CLASS__ , 'in_plugin_update_message' ) , 10 , 2 );
+    add_action( 'in_plugin_update_message-' . MYWP_SELECT_USER_ROLES_PLUGIN_BASENAME , array( __CLASS__ , 'in_plugin_update_message' ) , 10 , 2 );
 
     add_action( 'admin_print_footer_scripts' , array( __CLASS__ , 'admin_print_footer_scripts' ) );
 
@@ -90,15 +90,15 @@ final class MywpControllerModuleAddOnSelectUserRolesMainGeneral extends MywpCont
 
     }
 
-    $plugin_info = MywpAddOnSelectUserRolesApi::plugin_info();
+    $plugin_info = MywpSelectUserRolesApi::plugin_info();
 
     if( ! empty( $plugin_info['document_url'] ) ) {
 
-      $plugin_meta[] =  sprintf( '<a href="%1$s" target="_blank">%2$s</a>' , esc_url( $plugin_info['document_url'] ) , __( 'Document' , 'mywp-add-on-select-user-roles' ) );
+      $plugin_meta[] =  sprintf( '<a href="%1$s" target="_blank">%2$s</a>' , esc_url( $plugin_info['document_url'] ) , __( 'Document' , 'mywp-select-user-roles' ) );
 
     }
 
-    $plugin_meta = apply_filters( 'mywp_add_on_select_user_roles_plugin_row_meta' , $plugin_meta , $plugin_file , $plugin_data , $status );
+    $plugin_meta = apply_filters( 'mywp_select_user_roles_plugin_row_meta' , $plugin_meta , $plugin_file , $plugin_data , $status );
 
     return $plugin_meta;
 
@@ -112,7 +112,7 @@ final class MywpControllerModuleAddOnSelectUserRolesMainGeneral extends MywpCont
 
     }
 
-    $plugin_info = MywpAddOnSelectUserRolesApi::plugin_info();
+    $plugin_info = MywpSelectUserRolesApi::plugin_info();
 
     if( ! empty( $plugin_info['admin_url'] ) ) {
 
@@ -122,7 +122,7 @@ final class MywpControllerModuleAddOnSelectUserRolesMainGeneral extends MywpCont
 
     }
 
-    $actions = apply_filters( 'mywp_add_on_select_user_roles_plugin_action_links' , $actions , $plugin_file , $plugin_data , $context );
+    $actions = apply_filters( 'mywp_select_user_roles_plugin_action_links' , $actions , $plugin_file , $plugin_data , $context );
 
     return $actions;
 
@@ -140,9 +140,9 @@ final class MywpControllerModuleAddOnSelectUserRolesMainGeneral extends MywpCont
 
     echo '<p class="show">';
 
-    $plugin_info = MywpAddOnSelectUserRolesApi::plugin_info();
+    $plugin_info = MywpSelectUserRolesApi::plugin_info();
 
-    printf( __( 'There is a new version of %1$s available. <a href="%2$s" %3$s>View version %4$s details</a>.' ) , $response->new_version , $plugin_info['github'] , 'target="_blank"' ,  MYWP_ADD_ON_SELECT_USER_ROLES_NAME );
+    printf( __( 'There is a new version of %1$s available. <a href="%2$s" %3$s>View version %4$s details</a>.' ) , $response->new_version , $plugin_info['github'] , 'target="_blank"' ,  MYWP_SELECT_USER_ROLES_NAME );
 
   }
 
@@ -150,8 +150,8 @@ final class MywpControllerModuleAddOnSelectUserRolesMainGeneral extends MywpCont
 
     echo '<style>';
 
-    printf( 'tr#%s-update .update-message p { display: none; }' , MYWP_ADD_ON_SELECT_USER_ROLES_PLUGIN_DIRNAME );
-    printf( 'tr#%s-update .update-message p.show { display: block; }' , MYWP_ADD_ON_SELECT_USER_ROLES_PLUGIN_DIRNAME );
+    printf( 'tr#%s-update .update-message p { display: none; }' , MYWP_SELECT_USER_ROLES_PLUGIN_DIRNAME );
+    printf( 'tr#%s-update .update-message p.show { display: block; }' , MYWP_SELECT_USER_ROLES_PLUGIN_DIRNAME );
 
     echo '</style>';
 
@@ -159,6 +159,6 @@ final class MywpControllerModuleAddOnSelectUserRolesMainGeneral extends MywpCont
 
 }
 
-MywpControllerModuleAddOnSelectUserRolesMainGeneral::init();
+MywpControllerModuleSelectUserRolesMainGeneral::init();
 
 endif;

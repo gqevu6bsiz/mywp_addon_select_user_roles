@@ -1,0 +1,62 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: My WP Add-on Select User Roles\n"
+"POT-Creation-Date: 2017-12-24 19:40+0900\n"
+"PO-Revision-Date: 2017-12-24 19:44+0900\n"
+"Last-Translator: My WP Customize <info@mywpcustomize.com>\n"
+"Language-Team: info@mywpcustomize.com\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.5\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: controller/modules/mywp.controller.module.main.general.php:97
+#: setting/modules/mywp.setting.select-user-roles.php:185
+#: setting/modules/mywp.setting.select-user-roles.php:187
+msgid "Document"
+msgstr "ドキュメント"
+
+#: controller/modules/mywp.controller.module.updater.php:174
+msgid "Invalid remote Json data. Please try again."
+msgstr "Json 形式が違いました。もう一度お試しください。"
+
+#: controller/modules/mywp.controller.module.updater.php:184
+msgid "Invalid results. Sorry maybe update format changed."
+msgstr "形式エラー。アップデートの形式が変更された可能性があります。"
+
+#: setting/modules/mywp.setting.select-user-roles.php:90
+#: setting/modules/mywp.setting.select-user-roles.php:172
+msgid "Using a latest version."
+msgstr "最新版をご利用中です。"
+
+#: setting/modules/mywp.setting.select-user-roles.php:105
+#, php-format
+msgid ""
+"%1$s allows the management for only your selected user roles to be "
+"customized."
+msgstr ""
+"%1$s はカスタマイズを適用するユーザー権限グループを指定することがで"
+"きます。"
+
+#: setting/modules/mywp.setting.select-user-roles.php:106
+msgid "Select the user roles to customize below."
+msgstr "ユーザー権限グループを選択してください。"
+
+#: setting/modules/mywp.setting.select-user-roles.php:164
+msgid "Plugin info"
+msgstr "プラグイン情報"
+
+#: setting/modules/mywp.setting.select-user-roles.php:168
+msgid "Version"
+msgstr "バージョン"
+
+#: setting/modules/mywp.setting.select-user-roles.php:177
+msgid "Check latest"
+msgstr "最新版チェック"
+
+#: setting/modules/mywp.setting.select-user-roles.php:179
+msgid "Check latest version"
+msgstr "最新版をチェックする"
