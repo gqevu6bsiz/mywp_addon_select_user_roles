@@ -3,7 +3,7 @@
 Plugin Name: My WP Add-on Select User Roles
 Plugin URI: https://mywpcustomize.com/
 Description: My WP Add-on Select User Roles is apply customize for only selected user roles on My WP.
-Version: 1.1.4
+Version: 1.1.5
 Author: gqevu6bsiz
 Author URI: http://gqevu6bsiz.chicappa.jp/
 Text Domain: mywp-select-user-roles
@@ -51,7 +51,7 @@ final class MywpSelectUserRoles {
   private static function define_constants() {
 
     define( 'MYWP_SELECT_USER_ROLES_NAME' , 'My WP Add-on Select User Roles' );
-    define( 'MYWP_SELECT_USER_ROLES_VERSION' , '1.1.4' );
+    define( 'MYWP_SELECT_USER_ROLES_VERSION' , '1.1.5' );
     define( 'MYWP_SELECT_USER_ROLES_PLUGIN_FILE' , __FILE__ );
     define( 'MYWP_SELECT_USER_ROLES_PLUGIN_BASENAME' , plugin_basename( MYWP_SELECT_USER_ROLES_PLUGIN_FILE ) );
     define( 'MYWP_SELECT_USER_ROLES_PLUGIN_DIRNAME' , dirname( MYWP_SELECT_USER_ROLES_PLUGIN_BASENAME ) );

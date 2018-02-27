@@ -33,7 +33,7 @@ final class MywpControllerModuleSelectUserRolesUpdater extends MywpControllerAbs
 
   public static function site_transient_update_plugins( $site_transient ) {
 
-    if( empty( $site_transient ) or empty( $site_transient->response ) ) {
+    if( empty( $site_transient ) or ! isset( $site_transient->response ) ) {
 
       return $site_transient;
 
