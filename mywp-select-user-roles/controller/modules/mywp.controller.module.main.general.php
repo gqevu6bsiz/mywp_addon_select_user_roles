@@ -94,7 +94,7 @@ final class MywpControllerModuleSelectUserRolesMainGeneral extends MywpControlle
 
     if( ! empty( $plugin_info['document_url'] ) ) {
 
-      $plugin_meta[] =  sprintf( '<a href="%1$s" target="_blank">%2$s</a>' , esc_url( $plugin_info['document_url'] ) , __( 'Document' , 'mywp-select-user-roles' ) );
+      $plugin_meta[] =  sprintf( '<a href="%1$s" target="_blank">%2$s</a>' , esc_url( $plugin_info['document_url'] ) , __( 'Documents' , 'my-wp' ) );
 
     }
 

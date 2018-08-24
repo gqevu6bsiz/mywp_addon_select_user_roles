@@ -161,7 +161,7 @@ final class MywpSettingScreenSelectUserRoles extends MywpAbstractSettingModule {
 
     ?>
     <p>&nbsp;</p>
-    <h3><?php _e( 'Plugin info' , 'mywp-select-user-roles' ); ?></h3>
+    <h3><?php _e( 'Plugin info' , 'my-wp' ); ?></h3>
     <table class="form-table <?php echo esc_attr( $class_have_latest ); ?>" id="version-check-table">
       <tbody>
         <tr>
@@ -182,9 +182,9 @@ final class MywpSettingScreenSelectUserRoles extends MywpAbstractSettingModule {
           </td>
         </tr>
         <tr>
-          <th><?php _e( 'Document' , 'mywp-select-user-roles' ); ?></th>
+          <th><?php _e( 'Documents' , 'my-wp' ); ?></th>
           <td>
-            <a href="<?php echo esc_url( $plugin_info['document_url'] ); ?>" class="button button-secondary" target="_blank"><span class="dashicons dashicons-book"></span> <?php _e( 'Document' , 'mywp-select-user-roles' ); ?>
+            <a href="<?php echo esc_url( $plugin_info['document_url'] ); ?>" class="button button-secondary" target="_blank"><span class="dashicons dashicons-book"></span> <?php _e( 'Documents' , 'my-wp' ); ?>
           </td>
         </tr>
       </tbody>

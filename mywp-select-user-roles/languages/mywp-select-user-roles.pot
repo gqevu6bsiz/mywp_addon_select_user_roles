@@ -3,28 +3,51 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: My WP Add-on Select User Roles\n"
-"POT-Creation-Date: 2017-12-24 19:40+0900\n"
+"POT-Creation-Date: 2018-08-24 14:43+0900\n"
 "PO-Revision-Date: 2017-12-24 19:39+0900\n"
 "Last-Translator: \n"
 "Language-Team: info@mywpcustomize.com\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.5\n"
+"X-Generator: Poedit 2.0.7\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: mywp-select-user-roles.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
-"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
 #: controller/modules/mywp.controller.module.main.general.php:97
 #: setting/modules/mywp.setting.select-user-roles.php:185
 #: setting/modules/mywp.setting.select-user-roles.php:187
-msgid "Document"
+msgid "Documents"
+msgstr ""
+
+#: controller/modules/mywp.controller.module.main.general.php:119
+msgid "Settings"
+msgstr ""
+
+#: controller/modules/mywp.controller.module.main.general.php:145
+#, php-format
+msgid ""
+"There is a new version of %1$s available. <a href=\"%2$s\" %3$s>View "
+"version %4$s details</a>."
+msgstr ""
+
+#: controller/modules/mywp.controller.module.updater.php:95
+#: controller/modules/mywp.controller.module.updater.php:130
+msgid "Connection lost or the server is busy. Please try again later."
+msgstr ""
+
+#: controller/modules/mywp.controller.module.updater.php:124
+#: controller/modules/mywp.controller.module.updater.php:140
+#: setting/modules/mywp.setting.select-user-roles.php:248
+#: setting/modules/mywp.setting.select-user-roles.php:282
+msgid "An error has occurred. Please reload the page and try again."
 msgstr ""
 
 #: controller/modules/mywp.controller.module.updater.php:174
@@ -33,6 +56,12 @@ msgstr ""
 
 #: controller/modules/mywp.controller.module.updater.php:184
 msgid "Invalid results. Sorry maybe update format changed."
+msgstr ""
+
+#: setting/modules/mywp.setting.select-user-roles.php:24
+#: setting/modules/mywp.setting.select-user-roles.php:35
+#: setting/modules/mywp.setting.select-user-roles.php:108
+msgid "User Roles"
 msgstr ""
 
 #: setting/modules/mywp.setting.select-user-roles.php:90
@@ -51,6 +80,11 @@ msgstr ""
 msgid "Select the user roles to customize below."
 msgstr ""
 
+#: setting/modules/mywp.setting.select-user-roles.php:123
+#, php-format
+msgid "%1$s <span class=\"count\">(%2$s)</span>"
+msgstr ""
+
 #: setting/modules/mywp.setting.select-user-roles.php:164
 msgid "Plugin info"
 msgstr ""
@@ -59,10 +93,21 @@ msgstr ""
 msgid "Version"
 msgstr ""
 
+#: setting/modules/mywp.setting.select-user-roles.php:171
+#, php-format
+msgid "Get Version %s"
+msgstr ""
+
 #: setting/modules/mywp.setting.select-user-roles.php:177
 msgid "Check latest"
 msgstr ""
 
 #: setting/modules/mywp.setting.select-user-roles.php:179
 msgid "Check latest version"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"My WP Add-on Select User Roles is apply customize for only selected user "
+"roles on My WP."
 msgstr ""
