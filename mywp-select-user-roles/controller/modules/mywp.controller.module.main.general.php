@@ -18,11 +18,11 @@ final class MywpControllerModuleSelectUserRolesMainGeneral extends MywpControlle
 
   protected static function after_init() {
 
-    add_filter( 'mywp_controller_model_' . self::$id , array( __CLASS__ , 'mywp_controller_model' ) );
+    add_filter( 'mywp_controller_pre_get_model_' . self::$id , array( __CLASS__ , 'mywp_controller_pre_get_model' ) );
 
   }
 
-  public static function mywp_controller_model( $pre_model ) {
+  public static function mywp_controller_pre_get_model( $pre_model ) {
 
     $pre_model = true;
 
@@ -66,15 +66,7 @@ final class MywpControllerModuleSelectUserRolesMainGeneral extends MywpControlle
 
     add_filter( 'plugin_row_meta' , array( __CLASS__ , 'plugin_row_meta' ) , 10 , 4 );
 
-    if( is_multisite() ) {
-
-      add_filter( 'network_admin_plugin_action_links_' . MYWP_SELECT_USER_ROLES_PLUGIN_BASENAME , array( __CLASS__ , 'plugin_action_links' ) , 10 , 4 );
-
-    } else {
-
-      add_filter( 'plugin_action_links_' . MYWP_SELECT_USER_ROLES_PLUGIN_BASENAME , array( __CLASS__ , 'plugin_action_links' ) , 10 , 4 );
-
-    }
+    add_filter( 'plugin_action_links_' . MYWP_SELECT_USER_ROLES_PLUGIN_BASENAME , array( __CLASS__ , 'plugin_action_links' ) , 10 , 4 );
 
     add_action( 'in_plugin_update_message-' . MYWP_SELECT_USER_ROLES_PLUGIN_BASENAME , array( __CLASS__ , 'in_plugin_update_message' ) , 10 , 2 );
 

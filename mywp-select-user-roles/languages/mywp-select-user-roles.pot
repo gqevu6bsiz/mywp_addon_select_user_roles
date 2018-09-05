@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: My WP Add-on Select User Roles\n"
-"POT-Creation-Date: 2018-08-24 14:43+0900\n"
+"POT-Creation-Date: 2018-09-05 11:30+0900\n"
 "PO-Revision-Date: 2017-12-24 19:39+0900\n"
 "Last-Translator: \n"
 "Language-Team: info@mywpcustomize.com\n"
@@ -21,88 +21,89 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: controller/modules/mywp.controller.module.main.general.php:97
-#: setting/modules/mywp.setting.select-user-roles.php:185
-#: setting/modules/mywp.setting.select-user-roles.php:187
+#: controller/modules/mywp.controller.module.main.general.php:89
+#: setting/modules/mywp.setting.select-user-roles.php:186
+#: setting/modules/mywp.setting.select-user-roles.php:188
 msgid "Documents"
 msgstr ""
 
-#: controller/modules/mywp.controller.module.main.general.php:119
+#: controller/modules/mywp.controller.module.main.general.php:111
 msgid "Settings"
 msgstr ""
 
-#: controller/modules/mywp.controller.module.main.general.php:145
+#: controller/modules/mywp.controller.module.main.general.php:137
 #, php-format
 msgid ""
 "There is a new version of %1$s available. <a href=\"%2$s\" %3$s>View "
 "version %4$s details</a>."
 msgstr ""
 
-#: controller/modules/mywp.controller.module.updater.php:95
-#: controller/modules/mywp.controller.module.updater.php:130
+#: controller/modules/mywp.controller.module.updater.php:106
+#: controller/modules/mywp.controller.module.updater.php:143
 msgid "Connection lost or the server is busy. Please try again later."
 msgstr ""
 
-#: controller/modules/mywp.controller.module.updater.php:124
-#: controller/modules/mywp.controller.module.updater.php:140
-#: setting/modules/mywp.setting.select-user-roles.php:248
-#: setting/modules/mywp.setting.select-user-roles.php:282
+#: controller/modules/mywp.controller.module.updater.php:137
+#: controller/modules/mywp.controller.module.updater.php:153
+#: setting/modules/mywp.setting.select-user-roles.php:249
+#: setting/modules/mywp.setting.select-user-roles.php:283
 msgid "An error has occurred. Please reload the page and try again."
 msgstr ""
 
-#: controller/modules/mywp.controller.module.updater.php:174
+#: controller/modules/mywp.controller.module.updater.php:189
 msgid "Invalid remote Json data. Please try again."
 msgstr ""
 
-#: controller/modules/mywp.controller.module.updater.php:184
+#: controller/modules/mywp.controller.module.updater.php:199
 msgid "Invalid results. Sorry maybe update format changed."
 msgstr ""
 
 #: setting/modules/mywp.setting.select-user-roles.php:24
 #: setting/modules/mywp.setting.select-user-roles.php:35
-#: setting/modules/mywp.setting.select-user-roles.php:108
+#: setting/modules/mywp.setting.select-user-roles.php:109
 msgid "User Roles"
 msgstr ""
 
-#: setting/modules/mywp.setting.select-user-roles.php:90
-#: setting/modules/mywp.setting.select-user-roles.php:172
+#: setting/modules/mywp.setting.select-user-roles.php:91
+#: setting/modules/mywp.setting.select-user-roles.php:173
 msgid "Using a latest version."
 msgstr ""
 
-#: setting/modules/mywp.setting.select-user-roles.php:105
+#: setting/modules/mywp.setting.select-user-roles.php:106
 #, php-format
 msgid ""
 "%1$s allows the management for only your selected user roles to be "
 "customized."
 msgstr ""
 
-#: setting/modules/mywp.setting.select-user-roles.php:106
+#: setting/modules/mywp.setting.select-user-roles.php:107
 msgid "Select the user roles to customize below."
 msgstr ""
 
-#: setting/modules/mywp.setting.select-user-roles.php:123
+#: setting/modules/mywp.setting.select-user-roles.php:124
 #, php-format
 msgid "%1$s <span class=\"count\">(%2$s)</span>"
 msgstr ""
 
-#: setting/modules/mywp.setting.select-user-roles.php:164
+#: setting/modules/mywp.setting.select-user-roles.php:165
 msgid "Plugin info"
 msgstr ""
 
-#: setting/modules/mywp.setting.select-user-roles.php:168
-msgid "Version"
+#: setting/modules/mywp.setting.select-user-roles.php:169
+#, php-format
+msgid "Version %s"
 msgstr ""
 
-#: setting/modules/mywp.setting.select-user-roles.php:171
+#: setting/modules/mywp.setting.select-user-roles.php:172
 #, php-format
 msgid "Get Version %s"
 msgstr ""
 
-#: setting/modules/mywp.setting.select-user-roles.php:177
+#: setting/modules/mywp.setting.select-user-roles.php:178
 msgid "Check latest"
 msgstr ""
 
-#: setting/modules/mywp.setting.select-user-roles.php:179
+#: setting/modules/mywp.setting.select-user-roles.php:180
 msgid "Check latest version"
 msgstr ""
 

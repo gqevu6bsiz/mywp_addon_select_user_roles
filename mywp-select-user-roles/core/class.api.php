@@ -44,6 +44,18 @@ final class MywpSelectUserRolesApi {
 
   }
 
+  public static function is_manager() {
+
+    return MywpApi::is_manager();
+
+  }
+
+  public static function get_all_user_roles() {
+
+    return MywpApi::get_all_user_roles();
+
+  }
+
   public static function get_count_user_roles() {
 
     $count_user_roles = count_users();

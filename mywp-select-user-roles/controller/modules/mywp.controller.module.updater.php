@@ -18,12 +18,13 @@ final class MywpControllerModuleSelectUserRolesUpdater extends MywpControllerAbs
 
   protected static function after_init() {
 
-    add_filter( 'mywp_controller_model_' . self::$id , array( __CLASS__ , 'mywp_controller_model' ) );
+    add_filter( 'mywp_controller_pre_get_model_' . self::$id , array( __CLASS__ , 'mywp_controller_pre_get_model' ) );
+
     add_filter( 'site_transient_update_plugins' , array( __CLASS__ , 'site_transient_update_plugins' ) );
 
   }
 
-  public static function mywp_controller_model( $pre_model ) {
+  public static function mywp_controller_pre_get_model( $pre_model ) {
 
     $pre_model = true;
 
@@ -82,6 +83,16 @@ final class MywpControllerModuleSelectUserRolesUpdater extends MywpControllerAbs
 
   public static function get_remote() {
 
+    $transient_key = 'mywp_select_user_roles_updater_remote';
+
+    $transient = get_site_transient( $transient_key );
+
+    if( ! empty( $transient ) ) {
+
+      return $transient;
+
+    }
+
     $plugin_info = MywpSelectUserRolesApi::plugin_info();
 
     $remote_args = array();
@@ -92,7 +103,7 @@ final class MywpControllerModuleSelectUserRolesUpdater extends MywpControllerAbs
 
     if( empty( $remote_result ) ) {
 
-      $error->add( 'not_results' , __( 'Connection lost or the server is busy. Please try again later.' ) );
+      $error->add( 'not_results' , __( 'Connection lost or the server is busy. Please try again later.' , 'mywp-select-user-roles' ) );
 
       return $error;
 
@@ -109,6 +120,8 @@ final class MywpControllerModuleSelectUserRolesUpdater extends MywpControllerAbs
     $remote_code = wp_remote_retrieve_response_code( $remote_result );
     $remote_body = wp_remote_retrieve_body( $remote_result );
 
+    set_site_transient( $transient_key , $remote_body , DAY_IN_SECONDS );
+
     if( $remote_code !== 200 ) {
 
       if( ! empty( $remote_body ) ) {
@@ -121,13 +134,13 @@ final class MywpControllerModuleSelectUserRolesUpdater extends MywpControllerAbs
 
         } else {
 
-          $error->add( 'invalid_json' , sprintf( '[%d] %s' , $remote_code , __( 'An error has occurred. Please reload the page and try again.' ) ) );
+          $error->add( 'invalid_json' , sprintf( '[%d] %s' , $remote_code , __( 'An error has occurred. Please reload the page and try again.' , 'mywp-select-user-roles' ) ) );
 
         }
 
       } else {
 
-        $error->add( 'invalid_connection' , sprintf( '[%d] %s' , $remote_code , __( 'Connection lost or the server is busy. Please try again later.' ) ) );
+        $error->add( 'invalid_connection' , sprintf( '[%d] %s' , $remote_code , __( 'Connection lost or the server is busy. Please try again later.' , 'mywp-select-user-roles' ) ) );
 
       }
 
@@ -137,7 +150,7 @@ final class MywpControllerModuleSelectUserRolesUpdater extends MywpControllerAbs
 
     if( empty( $remote_body ) ) {
 
-      $error->add( 'invalid_remote_body' , __( 'An error has occurred. Please reload the page and try again.' ) );
+      $error->add( 'invalid_remote_body' , __( 'An error has occurred. Please reload the page and try again.' , 'mywp-select-user-roles' ) );
 
       return $error;
 
@@ -149,7 +162,9 @@ final class MywpControllerModuleSelectUserRolesUpdater extends MywpControllerAbs
 
   public static function get_latest() {
 
-    $transient = get_site_transient( self::$id );
+    $transient_key = 'mywp_select_user_roles_updater';
+
+    $transient = get_site_transient( $transient_key );
 
     if( ! empty( $transient['latest'] ) ) {
 
@@ -159,7 +174,7 @@ final class MywpControllerModuleSelectUserRolesUpdater extends MywpControllerAbs
 
     $remote = self::get_remote();
 
-    if( is_wp_error( $remote ) ) {
+    if( empty( $remote ) or is_wp_error( $remote ) ) {
 
       return $remote;
 
@@ -191,7 +206,7 @@ final class MywpControllerModuleSelectUserRolesUpdater extends MywpControllerAbs
 
     $transient = array( 'latest' => $latest );
 
-    set_site_transient( self::$id , $transient , HOUR_IN_SECONDS );
+    set_site_transient( $transient_key , $transient , DAY_IN_SECONDS );
 
     if( ! function_exists( 'wp_clean_plugins_cache' ) ) {
 

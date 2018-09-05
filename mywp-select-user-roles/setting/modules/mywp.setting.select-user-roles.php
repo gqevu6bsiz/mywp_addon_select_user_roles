@@ -43,7 +43,7 @@ final class MywpSettingScreenSelectUserRoles extends MywpAbstractSettingModule {
 
   public static function mywp_ajax() {
 
-    if( ! MywpApi::is_manager() ) {
+    if( ! MywpSelectUserRolesApi::is_manager() ) {
 
       return false;
 
@@ -65,13 +65,14 @@ final class MywpSettingScreenSelectUserRoles extends MywpAbstractSettingModule {
 
     check_ajax_referer( $action_name , $action_name );
 
-    if( ! MywpApi::is_manager() ) {
+    if( ! MywpSelectUserRolesApi::is_manager() ) {
 
       return false;
 
     }
 
-    delete_site_transient( self::$id );
+    delete_site_transient( 'mywp_select_user_roles_updater' );
+    delete_site_transient( 'mywp_select_user_roles_updater_remote' );
 
     $is_latest = MywpControllerModuleSelectUserRolesUpdater::is_latest();
 
@@ -97,7 +98,7 @@ final class MywpSettingScreenSelectUserRoles extends MywpAbstractSettingModule {
 
     $setting_data = self::get_setting_data();
 
-    $all_user_roles = MywpApi::get_all_user_roles();
+    $all_user_roles = MywpSelectUserRolesApi::get_all_user_roles();
 
     $count_user_roles = MywpSelectUserRolesApi::get_count_user_roles();
 
@@ -165,7 +166,7 @@ final class MywpSettingScreenSelectUserRoles extends MywpAbstractSettingModule {
     <table class="form-table <?php echo esc_attr( $class_have_latest ); ?>" id="version-check-table">
       <tbody>
         <tr>
-          <th><?php _e( 'Version' , 'mywp-select-user-roles' ); ?></th>
+          <th><?php printf( __( 'Version %s' ) , '' ); ?></th>
           <td>
             <code><?php echo MYWP_SELECT_USER_ROLES_VERSION; ?></code>
             <a href="<?php echo esc_url( $plugin_info['github'] ); ?>" target="_blank" class="button button-primary link-latest"><?php printf( __( 'Get Version %s' ) , $have_latest ); ?></a>
