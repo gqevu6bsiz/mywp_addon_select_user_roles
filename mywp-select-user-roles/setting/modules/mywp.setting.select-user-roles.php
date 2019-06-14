@@ -35,6 +35,7 @@ final class MywpSettingScreenSelectUserRoles extends MywpAbstractSettingModule {
       'title' => __( 'User Roles' ),
       'menu' => self::$menu,
       'controller' => 'select_user_roles',
+      'document_url' => self::get_document_url( 'add_ons/add-on-select-user-roles/' ),
     );
 
     return $setting_screens;

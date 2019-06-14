@@ -64,6 +64,29 @@ final class MywpSelectUserRolesApi {
 
   }
 
+  public static function available_controllers() {
+
+    $available_controllers = array(
+      'admin_comments',
+      'admin_general',
+      'admin_sidebar',
+      'admin_toolbar',
+      'admin_posts',
+      'admin_post_edit',
+      'admin_dashboard',
+      'admin_nav_menu',
+      'admin_uploads',
+      'admin_user_edit',
+      'admin_users',
+      'login_user',
+    );
+
+    $available_controllers = apply_filters( 'mywp_select_user_roles_available_controllers' , $available_controllers );
+
+    return $available_controllers;
+
+  }
+
   public static function is_do_controller_to_controller_id( $controller_id ) {
 
     if( empty( $controller_id ) ) {
@@ -74,9 +97,11 @@ final class MywpSelectUserRolesApi {
 
     $controller_id = strip_tags( $controller_id );
 
+    $available_controllers = self::available_controllers();
+
     $is_do_controller = false;
 
-    if( strpos( $controller_id , 'admin_' ) !== false ) {
+    if( in_array( $controller_id , $available_controllers ) ) {
 
       $is_do_controller = true;
 
