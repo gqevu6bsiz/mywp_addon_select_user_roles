@@ -42,13 +42,7 @@ final class MywpSettingScreenSelectUserRoles extends MywpAbstractSettingModule {
 
   }
 
-  public static function mywp_ajax() {
-
-    if( ! MywpSelectUserRolesApi::is_manager() ) {
-
-      return false;
-
-    }
+  public static function mywp_ajax_manager() {
 
     add_action( 'wp_ajax_' . MywpSetting::get_ajax_action_name( self::$id , 'check_latest' ) , array( __CLASS__ , 'check_latest' ) );
 

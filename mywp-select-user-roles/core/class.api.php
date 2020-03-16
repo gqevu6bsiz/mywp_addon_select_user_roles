@@ -78,6 +78,7 @@ final class MywpSelectUserRolesApi {
       'admin_uploads',
       'admin_user_edit',
       'admin_users',
+      'frontend_toolbar',
       'login_user',
     );
 
