@@ -48,14 +48,13 @@ final class MywpSelectUserRolesApi {
 
     $available_controllers = array(
       'admin_comments',
-      'admin_dashboard',
       'admin_general',
-      'admin_nav_menu',
-      'admin_post_edit',
-      'admin_posts',
       'admin_sidebar',
-      'admin_terms',
       'admin_toolbar',
+      'admin_posts',
+      'admin_post_edit',
+      'admin_dashboard',
+      'admin_nav_menu',
       'admin_uploads',
       'admin_user_edit',
       'admin_users',
