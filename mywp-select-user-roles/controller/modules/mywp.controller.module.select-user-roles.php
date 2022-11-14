@@ -50,7 +50,7 @@ final class MywpControllerModuleSelectUserRoles extends MywpControllerAbstractMo
 
     if( ! MywpSelectUserRolesApi::is_do_controller_to_controller_id( $controller_id ) ) {
 
-      return $is_do_controller;
+      return false;
 
     }
 

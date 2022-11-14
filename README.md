@@ -2,6 +2,9 @@
 
 Add-on the apply customize for selected user roles on `My WP`.
 
+![My WP](https://img.shields.io/badge/My%20WP-Ver%201.20-blue)
+
+
 ## Description
 This Add-on is require My WP Customize plugin. [My WP Customize.](https://mywpcustomize.com/)
 This plugin was possible to customize for only your selected user roles.
