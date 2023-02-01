@@ -83,7 +83,7 @@ final class MywpSelectUserRolesApi {
 
     $is_do_controller = false;
 
-    if( in_array( $controller_id , $available_controllers ) ) {
+    if( in_array( $controller_id , $available_controllers , true ) ) {
 
       $is_do_controller = true;
 

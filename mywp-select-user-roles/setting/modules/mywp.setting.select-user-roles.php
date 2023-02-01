@@ -107,7 +107,7 @@ final class MywpSettingScreenSelectUserRoles extends MywpAbstractSettingModule {
       <?php foreach( $all_user_roles as $user_role => $user_role_data ) : ?>
 
         <?php $checked = false; ?>
-        <?php if( in_array( $user_role , $setting_data['select_user_roles'] ) ) : ?>
+        <?php if( in_array( $user_role , $setting_data['select_user_roles'] , true ) ) : ?>
           <?php $checked = true; ?>
         <?php endif; ?>
         <li>

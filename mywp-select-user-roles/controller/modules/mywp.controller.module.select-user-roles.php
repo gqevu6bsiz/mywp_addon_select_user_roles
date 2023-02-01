@@ -50,7 +50,7 @@ final class MywpControllerModuleSelectUserRoles extends MywpControllerAbstractMo
 
     if( ! MywpSelectUserRolesApi::is_do_controller_to_controller_id( $controller_id ) ) {
 
-      return false;
+      return $is_do_controller;
 
     }
 
@@ -66,7 +66,7 @@ final class MywpControllerModuleSelectUserRoles extends MywpControllerAbstractMo
 
     $current_user_role = $mywp_user->get_user_role();
 
-    if( in_array( $current_user_role , $setting_data['select_user_roles'] ) ) {
+    if( in_array( $current_user_role , $setting_data['select_user_roles'] , true ) ) {
 
       return true;
 
