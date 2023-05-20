@@ -107,18 +107,22 @@ final class MywpSettingScreenSelectUserRoles extends MywpAbstractSettingModule {
       <?php foreach( $all_user_roles as $user_role => $user_role_data ) : ?>
 
         <?php $checked = false; ?>
+
         <?php if( in_array( $user_role , $setting_data['select_user_roles'] , true ) ) : ?>
+
           <?php $checked = true; ?>
+
         <?php endif; ?>
+
         <li>
           <label>
             <input type="checkbox" name="mywp[data][select_user_roles][]" value="<?php echo esc_attr( $user_role ); ?>" <?php checked( $checked , true ); ?> />
-            <?php echo $user_role_data['label']; ?>
+            <?php echo esc_html( $user_role_data['label'] ); ?>
             <code>
               <?php if( isset( $count_user_roles[ $user_role ] ) ) : ?>
-                <?php printf( __( '%1$s <span class="count">(%2$s)</span>' ), $user_role, number_format_i18n( $count_user_roles[ $user_role ] ) ); ?>
+                <?php printf( __( '%1$s <span class="count">(%2$s)</span>' ) , esc_attr( $user_role ) , number_format_i18n( $count_user_roles[ $user_role ] ) ); ?>
               <?php else :?>
-                <?php echo $user_role; ?>
+                <?php echo esc_attr( $user_role ); ?>
               <?php endif; ?>
             </code>
           </label>
@@ -163,8 +167,8 @@ final class MywpSettingScreenSelectUserRoles extends MywpAbstractSettingModule {
         <tr>
           <th><?php printf( __( 'Version %s' ) , '' ); ?></th>
           <td>
-            <code><?php echo MYWP_SELECT_USER_ROLES_VERSION; ?></code>
-            <a href="<?php echo esc_url( $plugin_info['github'] ); ?>" target="_blank" class="button button-primary link-latest"><?php printf( __( 'Get Version %s' ) , $have_latest ); ?></a>
+            <code><?php echo esc_html( MYWP_SELECT_USER_ROLES_VERSION ); ?></code>
+            <a href="<?php echo esc_url( $plugin_info['github'] ); ?>" target="_blank" class="button button-primary link-latest"><?php printf( __( 'Get Version %s' ) , esc_attr( $have_latest ) ); ?></a>
             <p class="already-latest"><span class="dashicons dashicons-yes"></span> <?php _e( 'Using a latest version.' , 'mywp-select-user-roles' ); ?></p>
             <br />
           </td>
@@ -227,8 +231,8 @@ jQuery(document).ready(function($){
     $version_check_table.addClass('checking');
 
     PostData = {
-      action: '<?php echo MywpSetting::get_ajax_action_name( self::$id , 'check_latest' ); ?>',
-      <?php echo MywpSetting::get_ajax_action_name( self::$id , 'check_latest' ); ?>: '<?php echo wp_create_nonce( MywpSetting::get_ajax_action_name( self::$id , 'check_latest' ) ); ?>'
+      action: '<?php echo esc_js( MywpSetting::get_ajax_action_name( self::$id , 'check_latest' ) ); ?>',
+      <?php echo esc_js( MywpSetting::get_ajax_action_name( self::$id , 'check_latest' ) ); ?>: '<?php echo esc_js( wp_create_nonce( MywpSetting::get_ajax_action_name( self::$id , 'check_latest' ) ) ); ?>'
     };
 
     $.ajax({
@@ -241,7 +245,7 @@ jQuery(document).ready(function($){
 
         $version_check_table.removeClass('checking');
 
-        alert( '<?php _e( 'An error has occurred. Please reload the page and try again.' ); ?>' );
+        alert( mywp_admin_setting.unknown_error_reload_page );
 
         return false;
 
@@ -275,7 +279,7 @@ jQuery(document).ready(function($){
 
       $version_check_table.removeClass('checking');
 
-      alert( '<?php _e( 'An error has occurred. Please reload the page and try again.' ); ?>' );
+      alert( mywp_admin_setting.unknown_error_reload_page );
 
       return false;
 

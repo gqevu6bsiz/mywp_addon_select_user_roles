@@ -15,6 +15,7 @@ final class MywpSelectUserRolesApi {
       'document_url' => 'https://mywpcustomize.com/add_ons/add-on-select-user-roles/',
       'website_url' => 'https://mywpcustomize.com/',
       'github' => 'https://github.com/gqevu6bsiz/mywp_addon_select_user_roles',
+      'github_raw' => 'https://raw.githubusercontent.com/gqevu6bsiz/mywp_addon_select_user_roles/',
       'github_tags' => 'https://api.github.com/repos/gqevu6bsiz/mywp_addon_select_user_roles/tags',
     );
 
@@ -54,6 +55,7 @@ final class MywpSelectUserRolesApi {
       'admin_post_edit',
       'admin_posts',
       'admin_sidebar',
+      'admin_site_editor',
       'admin_terms',
       'admin_toolbar',
       'admin_uploads',

@@ -2,7 +2,7 @@
 
 Add-on the apply customize for selected user roles on `My WP`.
 
-![My WP](https://img.shields.io/badge/My%20WP-Ver%201.20-blue)
+![My WP Customize](https://img.shields.io/badge/My%20WP-Ver%201.21-blue)
 
 
 ## Description

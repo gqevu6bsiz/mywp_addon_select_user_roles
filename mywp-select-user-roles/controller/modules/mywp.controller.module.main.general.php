@@ -68,9 +68,9 @@ final class MywpControllerModuleSelectUserRolesMainGeneral extends MywpControlle
 
     add_filter( 'plugin_action_links_' . MYWP_SELECT_USER_ROLES_PLUGIN_BASENAME , array( __CLASS__ , 'plugin_action_links' ) , 10 , 4 );
 
-    add_action( 'in_plugin_update_message-' . MYWP_SELECT_USER_ROLES_PLUGIN_BASENAME , array( __CLASS__ , 'in_plugin_update_message' ) , 10 , 2 );
+    //add_action( 'in_plugin_update_message-' . MYWP_SELECT_USER_ROLES_PLUGIN_BASENAME , array( __CLASS__ , 'in_plugin_update_message' ) , 10 , 2 );
 
-    add_action( 'admin_print_footer_scripts' , array( __CLASS__ , 'admin_print_footer_scripts' ) );
+    //add_action( 'admin_print_footer_scripts' , array( __CLASS__ , 'admin_print_footer_scripts' ) );
 
   }
 
@@ -120,6 +120,7 @@ final class MywpControllerModuleSelectUserRolesMainGeneral extends MywpControlle
 
   }
 
+  /*
   public static function in_plugin_update_message( $plugin_data , $response ) {
 
     if( empty( $response->new_version ) ) {
@@ -137,7 +138,9 @@ final class MywpControllerModuleSelectUserRolesMainGeneral extends MywpControlle
     printf( __( 'There is a new version of %1$s available. <a href="%2$s" %3$s>View version %4$s details</a>.' ) , $response->new_version , $plugin_info['github'] , 'target="_blank"' ,  MYWP_SELECT_USER_ROLES_NAME );
 
   }
+  */
 
+  /*
   public static function admin_print_footer_scripts() {
 
     echo '<style>';
@@ -148,6 +151,7 @@ final class MywpControllerModuleSelectUserRolesMainGeneral extends MywpControlle
     echo '</style>';
 
   }
+  */
 
 }
 
